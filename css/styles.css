@@ -884,7 +884,7 @@ p {
   transition: opacity 220ms ease;
 }
 
-.archive-tile > span:not(.archive-split-logos) {
+.archive-tile > span {
   position: relative;
   z-index: 2;
   color: #beef9e !important;
@@ -912,8 +912,8 @@ p {
   transform: scale(1.035);
 }
 
-.archive-tile:hover > span:not(.archive-split-logos),
-.archive-tile:focus-visible > span:not(.archive-split-logos) {
+.archive-tile:hover > span,
+.archive-tile:focus-visible > span {
   color: #beef9e !important;
   transform: translateY(-3px) scale(1.025);
 }
@@ -965,56 +965,16 @@ p {
     linear-gradient(30deg, rgba(255, 255, 255, 0.12), transparent 48%);
 }
 
-.archive-tile--ambition {
+.archive-tile--promecal {
   background:
     linear-gradient(rgba(12, 13, 14, 0.62), rgba(12, 13, 14, 0.62)),
     #4a4a4a;
+  --tile-logo: url("../assets/icons/logo-promecal.png");
+  --tile-logo-size: 78%;
   --tile-image:
     repeating-linear-gradient(110deg, rgba(255, 255, 255, 0.16) 0 2px, transparent 2px 18px),
     linear-gradient(132deg, rgba(255, 255, 255, 0.25), transparent 42%),
     linear-gradient(90deg, rgba(255, 255, 255, 0.12), transparent 66%);
-}
-
-.archive-tile--ambition::before {
-  display: none;
-}
-
-.archive-tile--ambition > span:first-of-type {
-  font-size: clamp(1.66rem, 3.6vw, 3.53rem);
-  max-width: 92%;
-}
-
-.archive-tile--ambition i {
-  display: none;
-}
-
-.archive-split-logos {
-  position: absolute !important;
-  inset: 0;
-  z-index: 0 !important;
-  display: grid;
-  max-width: none !important;
-  grid-template-columns: 40% 60%;
-  opacity: 0.5;
-}
-
-.archive-split-logo {
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 72%;
-  filter: grayscale(1) contrast(0.72) brightness(0.62);
-}
-
-.archive-split-logo--george {
-  background-size: 86%;
-}
-
-.archive-split-logo--navarra {
-  background-image: url("../assets/icons/logo-universidad-navarra.png");
-}
-
-.archive-split-logo--george {
-  background-image: url("../assets/icons/logo-george-washington-university.png");
 }
 
 .archive-tile--dispute {
@@ -2012,7 +1972,7 @@ p {
   min-height: 390px;
 }
 
-.timeline-station time {
+.timeline-station :is(time, .timeline-collection-label) {
   color: var(--gold);
   font-family: "PT Mono", ui-monospace, monospace;
   font-size: clamp(0.68rem, 1vw, 0.82rem);
@@ -4315,7 +4275,7 @@ p {
     grid-template-rows: repeat(4, minmax(9.5rem, 1fr));
   }
 
-  .archive-tile > span:not(.archive-split-logos) {
+  .archive-tile > span {
     color: #beef9e !important;
     font-size: clamp(0.975rem, 2.125vw, 2.075rem);
   }

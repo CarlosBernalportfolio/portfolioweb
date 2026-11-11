@@ -304,8 +304,19 @@ const textTranslations = {
     "El Comercio / Crime and incidents": "El Comercio / Sucesos",
     "Suicide": "Suicidio",
     "Police raid": "Redada",
-    "Academic work": "Títulos, trabajos y",
-    "and collaborations": "colaboraciones académicas",
+    "Degrees, academic work and collaborations": "Títulos, trabajos y colaboraciones académicas",
+    "Academic collection": "Selección académica",
+    "Degrees, postgraduate training, research projects and academic publications.":
+      "Títulos, formación de posgrado, trabajos de investigación y publicaciones académicas.",
+    "Training and publications": "Formación y publicaciones",
+    "Grupo Promecal (SPC) / National news": "Grupo Promecal (SPC) / Nacional",
+    "National news": "Nacional",
+    "Service for shared newspaper pages": "Servicio de Páginas Comunes",
+    "Two articles by Carlos Bernal (SPC) on the Ceuta border, presented as reconstructed newspaper pages.":
+      "Dos artículos firmados por Carlos Bernal (SPC) sobre la frontera de Ceuta, presentados como páginas de prensa reconstruidas.",
+    "Reconstructed newspaper page for La frontera invisible": "Página de prensa reconstruida de La frontera invisible",
+    "Reconstructed newspaper page for El origen de una llegada descontrolada":
+      "Página de prensa reconstruida de El origen de una llegada descontrolada",
     "Academic degrees": "Títulos académicos",
     "Digital Transformation - Change Agent - 2026": "Transformación Digital - Agente del Cambio - 2026",
     "Digital Transformation": "Transformación Digital",
@@ -2155,6 +2166,35 @@ const panelContent = {
             title: "Fondos europeos Next Generation",
             theme: "La Voz del Trubia / Junio 2026 / PDF",
             href: "assets/documents/lavoz/junio-trubia-2026.pdf",
+          },
+        ],
+      },
+    ],
+  },
+  promecal: {
+    kicker: "Service for shared newspaper pages",
+    title: "Grupo Promecal (SPC) / National news",
+    type: "reader",
+    chapters: [
+      {
+        title: "National news",
+        items: [
+          {
+            type: "copyBlock",
+            label: "National news",
+            title: "Grupo Promecal (SPC)",
+            body:
+              "Two articles by Carlos Bernal (SPC) on the Ceuta border, presented as reconstructed newspaper pages.",
+          },
+          {
+            label: "01 / La frontera invisible",
+            src: "assets/images/promecal/la-frontera-invisible.png",
+            alt: "Reconstructed newspaper page for La frontera invisible",
+          },
+          {
+            label: "02 / El origen de una llegada descontrolada",
+            src: "assets/images/promecal/el-origen-de-una-llegada-descontrolada.png",
+            alt: "Reconstructed newspaper page for El origen de una llegada descontrolada",
           },
         ],
       },
