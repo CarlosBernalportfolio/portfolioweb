@@ -309,11 +309,7 @@ const textTranslations = {
     "Degrees, postgraduate training, research projects and academic publications.":
       "Títulos, formación de posgrado, trabajos de investigación y publicaciones académicas.",
     "Training and publications": "Formación y publicaciones",
-    "Grupo Promecal (SPC) / National news": "Grupo Promecal (SPC) / Nacional",
     "National news": "Nacional",
-    "Service for shared newspaper pages": "Servicio de Páginas Comunes",
-    "Two articles by Carlos Bernal (SPC) on the Ceuta border, presented as reconstructed newspaper pages.":
-      "Dos artículos firmados por Carlos Bernal (SPC) sobre la frontera de Ceuta, presentados como páginas de prensa reconstruidas.",
     "Reconstructed newspaper page for La frontera invisible": "Página de prensa reconstruida de La frontera invisible",
     "Reconstructed newspaper page for El origen de una llegada descontrolada":
       "Página de prensa reconstruida de El origen de una llegada descontrolada",
@@ -2172,20 +2168,13 @@ const panelContent = {
     ],
   },
   promecal: {
-    kicker: "Service for shared newspaper pages",
-    title: "Grupo Promecal (SPC) / National news",
+    title: "Grupo Promecal (SPC)",
     type: "reader",
     chapters: [
       {
         title: "National news",
+        showTitle: true,
         items: [
-          {
-            type: "copyBlock",
-            label: "National news",
-            title: "Grupo Promecal (SPC)",
-            body:
-              "Two articles by Carlos Bernal (SPC) on the Ceuta border, presented as reconstructed newspaper pages.",
-          },
           {
             label: "01 / La frontera invisible",
             src: "assets/images/promecal/la-frontera-invisible.png",
@@ -2968,7 +2957,8 @@ function openPanel(panelKey) {
   activePanelKey = panelKey;
   activeReaderCleanup?.();
   activeReaderCleanup = null;
-  panelKicker.textContent = localizeText(content.kicker);
+  panelKicker.hidden = !content.kicker;
+  panelKicker.textContent = content.kicker ? localizeText(content.kicker) : "";
   panelTitle.textContent = localizeText(content.title);
 
   if (content.type === "reader") {
@@ -2992,6 +2982,7 @@ function openPanel(panelKey) {
               .map(
                 (chapter) => `
                   <section class="archive-reader-chapter" aria-label="${escapeLocalized(chapter.title)}">
+                    ${chapter.showTitle ? `<h3>${escapeLocalized(chapter.title)}</h3>` : ""}
                     <div class="archive-reader">
                       ${renderReaderPages(chapter.items)}
                     </div>
