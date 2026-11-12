@@ -3120,8 +3120,11 @@ dialog?.addEventListener("click", (event) => {
   });
   viewport.addEventListener("pointermove", (event) => {
     if (!drag || !viewport.hasPointerCapture(event.pointerId)) return;
-    viewport.scrollLeft = drag.left - (event.clientX - drag.x);
-    viewport.scrollTop = drag.top - (event.clientY - drag.y);
+    viewport.scrollTo({
+      left: drag.left - (event.clientX - drag.x),
+      top: drag.top - (event.clientY - drag.y),
+      behavior: "instant",
+    });
   });
   viewport.addEventListener("lostpointercapture", () => {
     drag = null;
