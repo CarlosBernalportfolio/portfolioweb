@@ -311,6 +311,7 @@ const textTranslations = {
     "Training and publications": "Formación y publicaciones",
     "National news": "Nacional",
     "Economy": "Economía",
+    "Society": "Sociedad",
     "Enlarge": "Ampliar",
     "Left page": "Página izquierda",
     "Right page": "Página derecha",
@@ -2209,6 +2210,22 @@ const panelContent = {
           },
         ],
       },
+      {
+        title: "Society",
+        stacked: true,
+        items: [
+          {
+            label: "01 / Del ‘baby boom’ a la fiebre de las mascotas",
+            src: "assets/images/promecal/baby-boom-mascotas.png",
+            alt: "Del ‘baby boom’ a la fiebre de las mascotas",
+          },
+          {
+            label: "02 / Quini o ‘El Dioni’: golpes insólitos de delincuentes amateur",
+            src: "assets/images/promecal/quini-el-dioni.png",
+            alt: "Quini o ‘El Dioni’: golpes insólitos de delincuentes amateur",
+          },
+        ],
+      },
     ],
   },
   "archive-value": {
@@ -3017,7 +3034,7 @@ function openPanel(panelKey) {
                 (chapter) => `
                   <section class="archive-reader-chapter" aria-label="${escapeLocalized(chapter.title)}">
                     ${chapter.showTitle ? `<h3>${escapeLocalized(chapter.title)}</h3>` : ""}
-                    <div class="archive-reader">
+                    <div class="archive-reader${chapter.stacked ? " archive-reader--stacked" : ""}">
                       ${renderReaderPages(chapter.items)}
                     </div>
                   </section>

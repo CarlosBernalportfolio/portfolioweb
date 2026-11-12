@@ -4536,3 +4536,5 @@ p {
 .promecal-viewer-scroll img { display: block; width: 100%; max-width: none; height: auto; }
 
 .promecal-spread { grid-column: 1 / -1; }
+
+.archive-reader.archive-reader--stacked { grid-template-columns: minmax(0, 1fr); }
