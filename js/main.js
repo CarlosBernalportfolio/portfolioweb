@@ -3109,6 +3109,26 @@ dialog?.addEventListener("click", (event) => {
     </div>`;
   const viewport = viewer.querySelector(".promecal-viewer-scroll");
   const image = viewport.querySelector("img");
+  let drag;
+  viewport.addEventListener("pointerdown", (event) => {
+    if (event.pointerType !== "mouse" || event.button !== 0) return;
+    if (viewport.scrollWidth <= viewport.clientWidth && viewport.scrollHeight <= viewport.clientHeight) return;
+    drag = { x: event.clientX, y: event.clientY, left: viewport.scrollLeft, top: viewport.scrollTop };
+    viewport.setPointerCapture(event.pointerId);
+    viewport.classList.add("is-dragging");
+    event.preventDefault();
+  });
+  viewport.addEventListener("pointermove", (event) => {
+    if (!drag || !viewport.hasPointerCapture(event.pointerId)) return;
+    viewport.scrollLeft = drag.left - (event.clientX - drag.x);
+    viewport.scrollTop = drag.top - (event.clientY - drag.y);
+  });
+  viewport.addEventListener("lostpointercapture", () => {
+    drag = null;
+    viewport.classList.remove("is-dragging");
+  });
+  image.draggable = false;
+
   viewer.addEventListener("click", (event) => {
     const mode = event.target.dataset.zoom;
     if (!mode) return;
