@@ -4524,3 +4524,15 @@ p {
     min-height: auto;
   }
 }
+
+.promecal-spread { margin: 0; width: 100%; }
+.promecal-spread button { display: grid; gap: .5rem; width: 100%; padding: 0; cursor: zoom-in; }
+.promecal-spread img { display: block; width: 100%; height: auto; }
+.promecal-viewer { width: 100%; max-width: none; height: 100%; max-height: none; margin: 0; padding: 0; border: 0; background: #171717; color: white; }
+.promecal-viewer[open] { display: grid; grid-template-rows: auto minmax(0, 1fr); }
+.promecal-viewer-controls { display: flex; flex-wrap: wrap; gap: .5rem; padding: .75rem; }
+.promecal-viewer-controls button { padding: .4rem .65rem; background: #fff; color: #171717; cursor: pointer; }
+.promecal-viewer-scroll { overflow: auto; }
+.promecal-viewer-scroll img { display: block; width: 100%; max-width: none; height: auto; }
+
+.promecal-spread { grid-column: 1 / -1; }

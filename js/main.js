@@ -310,6 +310,12 @@ const textTranslations = {
       "Títulos, formación de posgrado, trabajos de investigación y publicaciones académicas.",
     "Training and publications": "Formación y publicaciones",
     "National news": "Nacional",
+    "Economy": "Economía",
+    "Enlarge": "Ampliar",
+    "Left page": "Página izquierda",
+    "Right page": "Página derecha",
+    "Fit to width": "Ajustar al ancho",
+    "Close viewer": "Cerrar visor",
     "Reconstructed newspaper page for La frontera invisible": "Página de prensa reconstruida de La frontera invisible",
     "Reconstructed newspaper page for El origen de una llegada descontrolada":
       "Página de prensa reconstruida de El origen de una llegada descontrolada",
@@ -2170,10 +2176,10 @@ const panelContent = {
   promecal: {
     title: "Grupo Promecal (SPC)",
     type: "reader",
+    keepTitle: true,
     chapters: [
       {
         title: "National news",
-        showTitle: true,
         items: [
           {
             label: "01 / La frontera invisible",
@@ -2184,6 +2190,22 @@ const panelContent = {
             label: "02 / El origen de una llegada descontrolada",
             src: "assets/images/promecal/el-origen-de-una-llegada-descontrolada.png",
             alt: "Reconstructed newspaper page for El origen de una llegada descontrolada",
+          },
+        ],
+      },
+      {
+        title: "Economy",
+        items: [
+          {
+            label: "01 / Testigo de una época",
+            src: "assets/images/promecal/seat-doble-pagina.png",
+            zoomSrc: "assets/images/promecal/seat-doble-pagina.png",
+            alt: "Testigo de una época",
+          },
+          {
+            label: "02 / 100 años trabajando menos para consumir más",
+            src: "assets/images/promecal/ford-100-anos.png",
+            alt: "100 años trabajando menos para consumir más",
           },
         ],
       },
@@ -2359,6 +2381,16 @@ function getYouTubeVideoId(value) {
 function renderReaderPages(items) {
   return items
     .map((item) => {
+      if (item.zoomSrc) {
+        return `<figure class="promecal-spread">
+          <figcaption>${escapeLocalized(item.label)}</figcaption>
+          <button type="button" data-spread="${escapeHtml(item.zoomSrc)}" data-spread-title="${escapeLocalized(item.alt)}">
+            <img src="${escapeHtml(item.src)}" alt="${escapeLocalized(item.alt)}" loading="lazy">
+            <span>${escapeLocalized("Enlarge")}</span>
+          </button>
+        </figure>`;
+      }
+
       if (item.type === "statsPanel") {
         return renderStatsPanel(item);
       }
@@ -2762,7 +2794,8 @@ function initializeReaderChapters(content) {
 
   const updateReader = () => {
     track.style.transform = `translateX(-${activeIndex * 100}%)`;
-    panelTitle.textContent = localizeText(chapters[activeIndex].title);
+    if (content.keepTitle) readerShell.querySelector("[data-reader-section]").textContent = localizeText(chapters[activeIndex].title);
+    else panelTitle.textContent = localizeText(chapters[activeIndex].title);
     counter.textContent = `${activeIndex + 1} / ${chapters.length}`;
     previousButton.disabled = activeIndex === 0;
     nextButton.disabled = activeIndex === chapters.length - 1;
@@ -2965,6 +2998,7 @@ function openPanel(panelKey) {
     const chapters = content.chapters || [{ title: content.title, items: content.items || [] }];
     panelBody.innerHTML = `
       <div class="archive-reader-shell" data-reader-shell>
+        ${content.keepTitle ? `<h3 data-reader-section></h3>` : ""}
         ${
           chapters.length > 1
             ? `
@@ -3036,6 +3070,42 @@ document.querySelectorAll("[data-panel]").forEach((trigger) => {
   trigger.addEventListener("click", () => {
     openPanel(trigger.dataset.panel);
   });
+});
+
+dialog?.addEventListener("click", (event) => {
+  const trigger = event.target.closest("[data-spread]");
+  if (!trigger) return;
+
+  const viewer = document.createElement("dialog");
+  viewer.className = "promecal-viewer";
+  viewer.setAttribute("aria-label", trigger.dataset.spreadTitle);
+  viewer.innerHTML = `
+    <div class="promecal-viewer-controls">
+      <button type="button" data-zoom="fit">${escapeLocalized("Fit to width")}</button>
+      <button type="button" data-zoom="left">${escapeLocalized("Left page")}</button>
+      <button type="button" data-zoom="right">${escapeLocalized("Right page")}</button>
+      <button type="button" data-zoom="in" aria-label="${escapeLocalized("Enlarge")}">+</button>
+      <button type="button" data-zoom="close">${escapeLocalized("Close viewer")}</button>
+    </div>
+    <div class="promecal-viewer-scroll" tabindex="0">
+      <img src="${escapeHtml(trigger.dataset.spread)}" alt="${escapeHtml(trigger.dataset.spreadTitle)}">
+    </div>`;
+  const viewport = viewer.querySelector(".promecal-viewer-scroll");
+  const image = viewport.querySelector("img");
+  viewer.addEventListener("click", (event) => {
+    const mode = event.target.dataset.zoom;
+    if (!mode) return;
+    if (mode === "close") { viewer.close(); return; }
+    if (mode === "fit") image.style.width = "100%";
+    else if (mode === "in") image.style.width = Math.max(image.offsetWidth, 600) * 1.5 + "px";
+    else image.style.width = Math.max(viewport.clientWidth * 2, 1500) + "px";
+    if (mode === "right") viewport.scrollLeft = image.offsetWidth / 2;
+    if (mode === "left" || mode === "fit") viewport.scrollLeft = 0;
+    if (mode !== "in") viewport.scrollTop = 0;
+  });
+  viewer.addEventListener("close", () => { viewer.remove(); trigger.focus({ preventScroll: true }); }, { once: true });
+  document.body.append(viewer);
+  viewer.showModal();
 });
 
 closeButton?.addEventListener("click", () => {
