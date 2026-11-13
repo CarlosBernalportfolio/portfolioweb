@@ -14,15 +14,16 @@
       href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Caveat:wght@700&family=IBM+Plex+Mono:wght@500;600&family=Newsreader:opsz,wght@6..72,500;6..72,700&family=PT+Mono&family=Prata&family=Raleway:wght@100;300;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
       rel="stylesheet"
     >
-    <link rel="stylesheet" href="css/styles.css?v=20261112-promecal-desplazamiento">
+    <link rel="stylesheet" href="css/styles.css?v=20261113-academia">
   </head>
   <body>
     <header class="site-header">
       <a class="brand" href="#top" aria-label="Back to the beginning">CB</a>
       <nav class="site-nav" aria-label="Main navigation">
+        <a href="#archive">Archive</a>
+        <a href="#academia">Academia</a>
         <a href="#world-map">World map</a>
         <a href="#work-timeline">Timeline</a>
-        <a href="#archive">Archive</a>
         <a href="#contact">Contact</a>
         <span class="language-switcher" role="group" aria-label="Language selector">
           <button class="language-toggle" type="button" data-lang="es" aria-label="Ver versión en español">ES</button>
@@ -145,6 +146,23 @@
                 <span class="archive-cross archive-cross--one" aria-hidden="true"></span>
                 <span class="archive-cross archive-cross--two" aria-hidden="true"></span>
                 <span class="archive-cross archive-cross--three" aria-hidden="true"></span>
+              </div>
+            </article>
+
+            <article class="timeline-station timeline-station--academia" id="academia" aria-labelledby="academia-title">
+              <div class="academia-copy">
+                <p class="academia-kicker">Academia</p>
+                <h2 id="academia-title">Degrees, academic work and collaborations</h2>
+                <p class="academia-intro">Fifteen years of curiosity and learning: journalism, audiovisual communication, corporate and political communication, screenwriting, graphic design and web development.</p>
+                <button class="academia-open" type="button" data-panel="navarra"><span>Explore the collection</span><span aria-hidden="true">↗</span></button>
+              </div>
+              <div class="academia-institutions" aria-label="Academic institutions">
+                <figure><img src="assets/icons/logo-universidad-navarra.png" alt="Universidad de Navarra" loading="lazy"><figcaption>Universidad de Navarra</figcaption></figure>
+                <figure><img src="assets/icons/logo-urjc.png" alt="Universidad Rey Juan Carlos" loading="lazy"><figcaption>Universidad Rey Juan Carlos</figcaption></figure>
+                <figure><img src="assets/icons/logo-trazos.jpg" alt="Trazos" loading="lazy"><figcaption>Trazos</figcaption></figure>
+                <figure><img src="assets/icons/logo-george-washington-university.png" alt="The George Washington University" loading="lazy"><figcaption>George Washington University</figcaption></figure>
+                <figure><img src="assets/icons/logo-factoria-del-guion.jpg" alt="La Factoría del Guion" loading="lazy"><figcaption>La Factoría del Guion</figcaption></figure>
+                <figure class="academia-wordmark"><span aria-hidden="true">UPM</span><figcaption>Universidad Politécnica de Madrid</figcaption></figure>
               </div>
             </article>
 
@@ -356,24 +374,6 @@
               <small>Journalism archive</small>
             </button>
 
-            <button class="timeline-station timeline-station--lane-low reveal" data-panel="hilo" data-date-label="Jan - May 2026">
-              <time>15-01-2026 / 15-05-2026</time>
-              <span class="timeline-duration" style="--duration: 4" aria-hidden="true"><i></i></span>
-              <img src="assets/icons/logo-hilo-rojo.jpg" alt="Hilo Rojo logo">
-              <h3>ONG Hilo Rojo</h3>
-              <p>I supported educational projects, told stories of childhood, community and cultural diversity, produced content for its social media channels and learned to communicate through listening and territory.</p>
-              <small>Third sector / Peru</small>
-            </button>
-
-            <button class="timeline-station timeline-station--lane-mid reveal" data-panel="navarra">
-              <span class="timeline-collection-label">Academic collection</span>
-              <span class="timeline-duration timeline-duration--academic" style="--duration: 10" aria-hidden="true"><i></i></span>
-              <img src="assets/icons/logo-universidad-navarra.png" alt="">
-              <h3>Degrees, academic work and collaborations</h3>
-              <p>Degrees, postgraduate training, research projects and academic publications.</p>
-              <small>Training and publications</small>
-            </button>
-
             <button class="timeline-station timeline-station--lane-high reveal" data-panel="george" data-date-label="Jan - Mar 2025">
               <time>15-01-2025 / 15-03-2025</time>
               <span class="timeline-duration timeline-duration--academic" style="--duration: 2" aria-hidden="true"><i></i></span>
@@ -381,6 +381,15 @@
               <h3>School of Political Management</h3>
               <p>I completed the GSPM at George Washington University, studying applied politics, advocacy and strategic communication through real cases in campaigns, institutions and public affairs.</p>
               <small>International training</small>
+            </button>
+
+            <button class="timeline-station timeline-station--lane-low reveal" data-panel="hilo" data-date-label="Jan - May 2026">
+              <time>15-01-2026 / 15-05-2026</time>
+              <span class="timeline-duration" style="--duration: 4" aria-hidden="true"><i></i></span>
+              <img src="assets/icons/logo-hilo-rojo.jpg" alt="Hilo Rojo logo">
+              <h3>ONG Hilo Rojo</h3>
+              <p>I supported educational projects, told stories of childhood, community and cultural diversity, produced content for its social media channels and learned to communicate through listening and territory.</p>
+              <small>Third sector / Peru</small>
             </button>
 
             <button class="timeline-station timeline-station--lane-mid reveal" data-panel="weber" data-date-label="Apr - Nov 2025">
@@ -551,6 +560,6 @@
 
     <script src="assets/vendor/d3.min.js" defer></script>
     <script src="assets/vendor/topojson-client.min.js" defer></script>
-    <script src="js/main.js?v=20261112-promecal-desplazamiento" defer></script>
+    <script src="js/main.js?v=20261113-academia" defer></script>
   </body>
 </html>

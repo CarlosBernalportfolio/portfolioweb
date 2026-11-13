@@ -14,6 +14,9 @@ const textTranslations = {
     "Timeline": "Trayectoria",
     "Archive": "Archivo",
     "Contact": "Contacto",
+    "Explore the collection": "Explorar la colección",
+    "Academic institutions": "Instituciones académicas",
+    "Fifteen years of curiosity and learning: journalism, audiovisual communication, corporate and political communication, screenwriting, graphic design and web development.": "Quince años de pasión por aprender: periodismo, comunicación audiovisual, corporativa y política, guion de cine y televisión, diseño gráfico y programación web.",
     "Journalist": "Periodista",
     "working at the crossroads where": "trabajando en el cruce donde",
     "field reporting, strategic communication, and public-impact work meet.":
@@ -784,7 +787,8 @@ const timelineStations = stations.filter(
   (station) =>
     !station.classList.contains("timeline-station--hero") &&
     !station.classList.contains("timeline-station--map") &&
-    !station.classList.contains("timeline-station--archive"),
+    !station.classList.contains("timeline-station--archive") &&
+    !station.classList.contains("timeline-station--academia"),
 );
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 const horizontalMedia = window.matchMedia("(min-width: 761px)");

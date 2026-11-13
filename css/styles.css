@@ -4541,3 +4541,49 @@ p {
 
 .promecal-viewer-scroll img { cursor: grab; }
 .promecal-viewer-scroll.is-dragging img { cursor: grabbing; }
+
+/* Main chapters follow DOM and navigation order. Academia starts with the mobile layout. */
+.career-track > .timeline-station,
+.career-track > .timeline-end-spacer { order: 0; }
+#archive, #academia, #world-map, #work-timeline { scroll-margin-top: 8rem; }
+.career-track > .timeline-station--academia {
+  display: grid;
+  width: 100%;
+  min-height: 100svh;
+  height: auto;
+  grid-template-columns: minmax(0, 1fr);
+  align-content: center;
+  gap: 2rem;
+  padding: 5rem 1.25rem 2.5rem;
+  border: 0;
+  border-radius: 0;
+  cursor: default;
+  background: radial-gradient(ellipse at 90% 10%, #28342b 0, transparent 60%), #101613;
+  box-shadow: none;
+  overflow: visible;
+}
+.academia-copy { min-width: 0; }
+#academia .academia-kicker { margin: 0 0 1rem; color: #beef9e; font: 600 .75rem "IBM Plex Mono", monospace; letter-spacing: .18em; text-transform: uppercase; }
+#academia h2 { max-width: 16ch; font-family: "Newsreader", Georgia, serif; font-size: clamp(2rem, 7.5vw, 3.2rem); line-height: 1.08; font-weight: 500; }
+#academia .academia-intro { max-width: 48ch; margin: 1.2rem 0 1.5rem; font-size: 1rem; line-height: 1.6; }
+.academia-open { display: inline-flex; align-items: center; justify-content: space-between; gap: 2rem; min-height: 48px; padding: .8rem 1.2rem; border: 1px solid #beef9e; border-radius: 0; background: #beef9e; color: #101613; font: 600 .9rem "Space Grotesk", sans-serif; cursor: pointer; }
+.academia-open:hover { background: #d4ffc0; }
+.academia-open:focus-visible { outline: 3px solid white; outline-offset: 5px; }
+.academia-institutions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem; }
+.academia-institutions figure { display: grid; justify-items: center; align-content: center; gap: .65rem; min-width: 0; margin: 0; padding: 1rem .65rem; background: #f4f2e9; color: #26332a; }
+#academia .academia-institutions img { width: 100%; max-width: 9rem; height: 4rem; padding: .25rem; border-radius: 0; background: transparent; object-fit: contain; }
+.academia-institutions figcaption { font: 500 .68rem/1.35 "Space Grotesk", sans-serif; text-align: center; }
+.academia-wordmark > span { display: grid; height: 4rem; align-items: center; font: 600 2rem "Space Grotesk", sans-serif; letter-spacing: .12em; }
+@media (min-width: 761px) {
+  .career-track > .timeline-station--academia { width: 100vw; min-height: 100svh; padding: 7rem clamp(2rem, 5vw, 6rem) 3rem; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: clamp(2rem, 5vw, 6rem); }
+  #academia h2 { font-size: clamp(2.4rem, 4.4vw, 4.8rem); }
+  .academia-institutions { gap: 1rem; }
+  .academia-institutions figure { padding: 1.1rem .8rem; }
+  #academia .academia-institutions img { height: clamp(3rem, 7vh, 5.5rem); }
+}
+@media (min-width: 1041px) {
+  .academia-institutions { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .career-track > .timeline-station--academia { width: 100%; }
+}
