@@ -4587,3 +4587,8 @@ p {
 @media (prefers-reduced-motion: reduce) {
   .career-track > .timeline-station--academia { width: 100%; }
 }
+
+/* Prevent native anchor scrolling from competing with the translated desktop track. */
+@media (min-width: 761px) and (prefers-reduced-motion: no-preference) {
+  .universe-sticky { overflow: clip; }
+}
