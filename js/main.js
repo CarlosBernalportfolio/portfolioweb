@@ -891,7 +891,7 @@ function getHorizontalTargetScroll(element) {
 
   const targetOffset = Math.min(
     maxTranslate,
-    Math.max(0, element.offsetLeft - window.innerWidth * 0.08),
+    Math.max(0, element.offsetLeft - (element.id === "academia" ? 0 : window.innerWidth * 0.08)),
   );
   return universe.offsetTop + targetOffset;
 }
